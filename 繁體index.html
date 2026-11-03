@@ -3275,7 +3275,7 @@ try{ renderFollowupList(); }catch(e){ console.error("renderFollowupList failed:"
 /* ============ PWA 離線註冊 ============ */
 if('serviceWorker' in navigator){
   (function(){var brand=document.querySelector('.brandbar');if(!brand)return;var caret=document.createElement('div');caret.className='bcaret';caret.setAttribute('aria-hidden','true');caret.innerHTML='<span class="bcg">\u2304</span>';brand.appendChild(caret);var KEY='brandCollapsed';try{if(localStorage.getItem(KEY)==='1')brand.classList.add('collapsed');}catch(e){}brand.addEventListener('click',function(){var c=brand.classList.toggle('collapsed');try{localStorage.setItem(KEY,c?'1':'0');}catch(e){}});})();
-  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{}));
 }
 
 </script>
@@ -4070,5 +4070,8 @@ if('serviceWorker' in navigator){
 })();
 
 </script>
+<script>var APPVER="v24-up1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["cc321-", "couples-321-v23"];</script>
+<script src="upd321.js?v=v24-up1103"></script>
+<script>UPD321.mountWhen("#page-us","end");</script>
 </body>
 </html>

@@ -1963,9 +1963,12 @@ function renderPearlList(){
 
 /* ============ PWA 離線註冊 ============ */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{}));
 }
 
 </script>
+<script>var APPVER="v24-up1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["cc321-", "couples-321-v23"];</script>
+<script src="upd321.js?v=v24-up1103"></script>
+<script>UPD321.mountWhen("#page-us","end");</script>
 </body>
 </html>
