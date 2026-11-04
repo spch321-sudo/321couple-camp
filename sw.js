@@ -5,10 +5,10 @@
      clients.claim，通知所有頁面；背景中的舊頁面直接帶到新版
    ‧ fetch：HTML／JS／JSON／CSS 網路優先（no-cache），離線才用快取；圖片等快取優先；
      version.json 永遠 no-store；影音與 Range 請求不攔截；範圍外（其他 App）與跨網域不碰 */
-var VER = 'v24-up1103-xz1103';
+var VER = 'v24-up1103-xz1103-xzm1103';
 var PFX = 'cc321-';
 var V = PFX + VER;
-var SHELL = ["./", "./index.html", "./繁體index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png", "./icon-512-maskable.png", "./upd321.js", "./xz2.js"];
+var SHELL = ["./", "./index.html", "./繁體index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png", "./icon-512-maskable.png", "./upd321.js", "./xz2.js", "./xzm.js"];
 var HOME = 'index.html';
 /* 離線快取開關：true＝網路優先、離線時用最近一次的快取；false＝完全不快取（SW 只負責更新通知、永遠走網路，維持「不離線」） */
 var OFFLINE = true;

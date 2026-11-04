@@ -3569,6 +3569,8 @@ if('serviceWorker' in navigator){
         st.msgs.push({role:"assistant",text:UI.offline}); st.busy=false; render(); scrollBtm(); });
   }
   window.xzAsk=function(t){ if(st.busy||!t) return; st.topic=-1; st.msgs.push({role:"user",text:t}); render(); scrollBtm(); callXZ(); };
+  /* XZM 掛鉤（-xzm1103）：供 xzm.js 讀取小智對話狀態 */
+  window.__xzHost={chat:function(){return st;},draw:function(){render();},open:function(){window.xzOpen();},ask:function(q){window.xzAsk(q);}};
   window.xzSend=function(){ var i=document.getElementById("xz-input"); if(!i) return; var t=(i.value||"").trim(); if(!t||st.busy) return; i.value=""; xzAsk(t); };
   window.xzTopic=function(ci){ st.topic=(st.topic===ci?-1:ci); render(); };
   window.xzTopicAsk=function(ci,qi){ var q=XZ_TOPICS[ci]&&XZ_TOPICS[ci].qs[qi]; if(q) xzAsk(q); };
@@ -3964,6 +3966,8 @@ if('serviceWorker' in navigator){
   window.annoCloseCard=function(){ var m=document.getElementById("an-card-mask"); if(m) m.classList.remove("on"); };
   window.annoShare=function(){ genCard(currentRec()); };
   window.annoShareKey=function(k){ var r=all()[k]; if(r) genCard(r); };
+  /* XZM 掛鉤（-xzm1103）：小智回答「做成美圖」 */
+  window.__xzCard=function(text,ref,note){ genCard({text:text||"",ref:ref||"",note:note||"",topic:-1}); };
 
   /* ---------- 事件：點句子 ---------- */
   document.addEventListener("click",function(e){ var s=e.target.closest&&e.target.closest("#d-body .sen"); if(s){ e.stopPropagation(); annoOpenSheet(s.dataset.sid, s.textContent, s.dataset.ref, Number(s.dataset.topic)||0); } },true);
@@ -4123,8 +4127,10 @@ if('serviceWorker' in navigator){
 })();
 
 </script>
-<script>var APPVER="v24-up1103-xz1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["cc321-", "couples-321-v23"];</script>
-<script src="upd321.js?v=v24-up1103-xz1103"></script>
+<script src="xzm.js?v=xzm1103"></script>
+<script>try{XZM.install(XZM.preset.cc());}catch(e){}</script>
+<script>var APPVER="v24-up1103-xz1103-xzm1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["cc321-", "couples-321-v23"];</script>
+<script src="upd321.js?v=v24-up1103-xz1103-xzm1103"></script>
 <script>UPD321.mountWhen("#page-us","end");</script>
 </body>
 </html>
